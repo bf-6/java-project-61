@@ -1,6 +1,10 @@
-package hexlet.code;
+package hexlet.code.games;
 
+//import java.util.Random;
 import java.util.Scanner;
+
+import hexlet.code.Cli;
+import org.apache.commons.lang3.RandomUtils;
 
 public class Even {
     public static void parityCheckNumber() {
@@ -18,7 +22,7 @@ public class Even {
         for (i = 0; i < 3; i++) {
 
             // Генерируем случайное число
-            int randomNumber = (int) (Math.random() * 100);
+            var randomNumber = RandomUtils.nextInt(1, 100); //(int) (Math.random() * 100);
 
             String evenNumber = "";
             // Проверяем сгенерированное число на четность, если четное, то переменной

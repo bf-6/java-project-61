@@ -1,5 +1,8 @@
 package hexlet.code;
 
+import hexlet.code.games.Calc;
+import hexlet.code.games.Even;
+
 import java.util.Scanner;
 
 public class App {
@@ -9,6 +12,7 @@ public class App {
         System.out.println("Please enter the game number and press Enter.\n"
                 + "1 - Greet\n"
                 + "2 - Even\n"
+                + "3 - Calc\n"
                 + "0 - Exit");
 
         String userChoice = selectionMenu.next();
@@ -22,6 +26,9 @@ public class App {
             case "2":
                 // String userName = Cli.nameForOurUser();
                 Even.parityCheckNumber(/*userName*/);
+                break;
+            case "3":
+                Calc.calculator();
                 break;
             default:
                 break;
