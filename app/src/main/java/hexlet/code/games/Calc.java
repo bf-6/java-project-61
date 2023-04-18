@@ -24,7 +24,6 @@ public class Calc {
             var randomNumber1 = RandomUtils.nextInt(1, 11);
             var randomNumber2 = RandomUtils.nextInt(1, 11);
 
-            //String evenNumber = "";
             // Присваиваем переменной operations арифметические операции, которые должен будет вычислить пользователь
             String operations = "+-*";
 
