@@ -27,7 +27,7 @@ public class GCD {
             System.out.println("Question: " + randomNumber1 + " " + randomNumber2);
 
             // Находим НОД посредством последовательного деления и записываем результат в переменную NOD
-            while (randomNumber2 !=0) {
+            while (randomNumber2 != 0) {
 
                 int tmp = randomNumber1 % randomNumber2;
                 randomNumber1 = randomNumber2;
@@ -35,7 +35,7 @@ public class GCD {
 
             }
 
-            int NOD = randomNumber1;
+            int nod = randomNumber1;
 
             // Объявляем переменную "userResponse" для записи ответа пользователя
             // и принмимаем ответ пользователя с клавиатуры
@@ -43,12 +43,12 @@ public class GCD {
             int userResponse = Integer.parseInt(userResponseInput.next());
 
             // Проверяем верен ли ответ пользователя
-            if (userResponse == NOD) {
+            if (userResponse == nod) {
                 System.out.println("Correct!");
             } else {
                 System.out.println("'" + userResponse + "'"
                         + " is wrong answer ;(. Correct answer was "
-                        + "'" + NOD + "'\n"
+                        + "'" + nod + "'\n"
                         + "Let's try again, " + userName + "!");
                 userResponseInput.close();
                 break;
