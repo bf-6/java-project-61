@@ -1,6 +1,5 @@
 package hexlet.code.games;
 
-//import java.util.Random;
 import java.util.Scanner;
 
 import hexlet.code.Cli;
@@ -44,10 +43,10 @@ public class Even {
             if (userResponse.equalsIgnoreCase(evenNumber)) {
                 System.out.println("Correct!");
             } else {
-                System.out.println("'" + userResponse + "'" +
-                        " is wrong answer ;(. Correct answer was " +
-                        "'" + evenNumber + "'\n" +
-                        "Let's try again, " + userName + "!");
+                System.out.println("'" + userResponse + "'"
+                        + " is wrong answer ;(. Correct answer was "
+                        + "'" + evenNumber + "'\n"
+                        + "Let's try again, " + userName + "!");
                 userResponseInput.close();
                 break;
             }

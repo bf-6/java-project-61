@@ -53,10 +53,10 @@ public class Calc {
             if (userResponse == resultOperation) {
                 System.out.println("Correct!");
             } else {
-                System.out.println("'" + userResponse + "'" +
-                        " is wrong answer ;(. Correct answer was " +
-                        "'" + resultOperation + "'\n" +
-                        "Let's try again, " + userName + "!");
+                System.out.println("'" + userResponse + "'"
+                        + " is wrong answer ;(. Correct answer was "
+                        + "'" + resultOperation + "'\n"
+                        + "Let's try again, " + userName + "!");
                 userResponseInput.close();
                 break;
             }
