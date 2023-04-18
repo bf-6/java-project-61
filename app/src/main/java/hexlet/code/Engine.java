@@ -1,9 +1,6 @@
 package hexlet.code;
 
-import hexlet.code.games.Calc;
-import hexlet.code.games.Even;
-import hexlet.code.games.GCD;
-import hexlet.code.games.Progression;
+import hexlet.code.games.*;
 
 public class Engine {
     public static void ourGames(String userChoice) {
@@ -23,6 +20,9 @@ public class Engine {
                 break;
             case "5":
                 Progression.progression();
+                break;
+            case "6":
+                Prime.prime();
                 break;
             default:
                 break;
