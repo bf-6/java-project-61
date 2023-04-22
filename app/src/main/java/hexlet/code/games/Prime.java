@@ -1,13 +1,24 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
+import hexlet.code.Engine;
 import org.apache.commons.lang3.RandomUtils;
 
 import java.util.Scanner;
 
 public class Prime {
+
+    // Объявляем константы. MIN и MAX для генерации случайного числа.
+    // ITERATION для количества вопросов пользователю (по умолчанию 3)
+    // DESCRIPTION для условия задачи
+    private static final int MIN = 2;
+    private static final int MAX = 100;
+    private static final int ITERATION = 3;
+    private static final String DESCRIPTION =
+            "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+
     // Метод для проверки является ли число простым
-    public static boolean itPrimeNumber(Integer number) { // Тут я не понял почему должно быть Integer, а не int
+    public static boolean itPrimeNumber(Integer number) {
+
         if (number < 2) {
             return false;
         }
@@ -16,59 +27,59 @@ public class Prime {
                 return false;
             }
         }
+
         return true;
+
     }
 
     public static void prime() {
         // Приветствуем пользователя
-        String userName = Cli.nameForOurUser();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Welcome to the Brain Games!");
+        System.out.print("May I have your name? ");
+        String userName = scanner.next();
+        System.out.println("Hello, " + userName + "!");
 
         // Выводим на экран условие игры
-        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+        System.out.println(DESCRIPTION);
 
-        Scanner userResponseInput = new Scanner(System.in);
+        //Объявляем переменную result2 для записи в неё верность ответа пользователя
+        boolean result2 = false;
 
         // Начинаем цикл для демонстрации пользователю числа, приема ответа пользователя
         // и проверки ответа пользователя
-        int i;
-        for (i = 0; i < 3; i++) {
+        for (int i = 0; i < ITERATION; i++) {
 
             // Генерируем случайное число, начинаем от 2
-            int randomNumber = RandomUtils.nextInt(2, 100); //(int) (Math.random() * 100);
+            int randomNumber = RandomUtils.nextInt(MIN, MAX); //(int) (Math.random() * 100);
 
+            // Объявляем переменную primeNumber для записии в неё результат проверки простое число или нет
             String primeNumber = "";
             // Проверяем является ли сгенерированное число простым, если оно простое, то переменной
             // "primeNumber" присваиваем значение "yes", если нет - "no"
-            if (itPrimeNumber(randomNumber)) {
-                primeNumber = "yes";
-            } else {
-                primeNumber = "no";
-            }
+            primeNumber = itPrimeNumber(randomNumber) ? "yes" : "no";
 
-            System.out.println("Question: " + randomNumber);
+            // Передаем данные для вопроса пользователя, правильный ответ и имя пользователя
+            // C помощью конкатенации приводим переменные типа int к типу String
+            var result = Engine.engine("" + randomNumber, primeNumber, userName);
 
-            // Объявляем переменную "userResponse" для записи ответа пользователя
-            // и принмимаем ответ пользователя с клавиатуры
-            System.out.print("Your choice: ");
-            String userResponse = userResponseInput.next();
+            // Переменной result2 присвамиваем верность ответа пользователя
+            result2 = result;
 
-            // Проверяем верен ли ответ пользователя
-            if (userResponse.equalsIgnoreCase(primeNumber)) {
-                System.out.println("Correct!");
-            } else {
-                System.out.println("'" + userResponse + "'"
-                    + " is wrong answer ;(. Correct answer was "
-                    + "'" + primeNumber + "'\n"
-                    + "Let's try again, " + userName + "!");
-                userResponseInput.close();
+            // Если пользователя ответил неправильно, то прекращаем выполнение цикла
+            if (!result) {
                 break;
             }
+
         }
-        if (i == 3) {
+
+        // Если пользователь ответил правильно на все вопросы, то выводим сообщение с поздравлением
+        if (result2) {
             System.out.println("Congratulations, " + userName + "!");
         }
 
-        userResponseInput.close();
+        scanner.close();
 
     }
 }

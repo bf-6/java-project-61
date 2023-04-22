@@ -1,36 +1,34 @@
 package hexlet.code;
 
-import hexlet.code.games.Calc;
-import hexlet.code.games.Even;
-import hexlet.code.games.GCD;
-import hexlet.code.games.Prime;
-import hexlet.code.games.Progression;
+import java.util.Scanner;
 
 public class Engine {
-    public static void ourGames(String userChoice) {
+    public static boolean engine(String question, String number, String userName) {
 
-        switch (userChoice) {
-            case "1":
-                Cli.nameForOurUser();
-                break;
-            case "2":
-                Even.parityCheckNumber();
-                break;
-            case "3":
-                Calc.calculator();
-                break;
-            case "4":
-                GCD.gcd();
-                break;
-            case "5":
-                Progression.progression();
-                break;
-            case "6":
-                Prime.prime();
-                break;
-            default:
-                break;
+        Scanner userResponseInput = new Scanner(System.in);
+
+        System.out.println("Question: " + question);
+
+        // Объявляем переменную "userResponse" для записи ответа пользователя
+        // и принмимаем ответ пользователя с клавиатуры
+        System.out.print("Your choice: ");
+        String userResponse = userResponseInput.next();
+
+        // Проверяем верен ли ответ пользователя
+        if (userResponse.equalsIgnoreCase(number)) {
+            System.out.println("Correct!");
+            return true;
+        } else {
+            System.out.println("'" + userResponse + "'"
+                    + " is wrong answer ;(. Correct answer was "
+                    + "'" + number + "'\n"
+                    + "Let's try again, " + userName + "!");
+            userResponseInput.close();
         }
+
+        userResponseInput.close();
+
+        return false;
 
     }
 }
