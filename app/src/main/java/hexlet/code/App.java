@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
 
-        Scanner selectionMenu = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         // Выводим для пользователя меню выбора игр
         System.out.println("Please enter the game number and press Enter.\n"
@@ -23,7 +23,7 @@ public class App {
                 + "0 - Exit");
 
         // Принимаем выбор пользователя и записываем его в переменную userChoice
-        String userChoice = selectionMenu.next();
+        String userChoice = scanner.next();
         System.out.println("Your choice: " + userChoice + "\n");
 
         // Запускаем игру в зависимости от выбора пользователя
@@ -50,7 +50,7 @@ public class App {
                 break;
         }
 
-        selectionMenu.close();
+        scanner.close();
 
     }
 }

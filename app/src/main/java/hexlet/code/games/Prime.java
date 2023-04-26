@@ -3,16 +3,12 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import org.apache.commons.lang3.RandomUtils;
 
-import java.util.Scanner;
-
 public class Prime {
 
     // Объявляем константы. MIN и MAX для генерации случайного числа.
-    // ITERATION для количества вопросов пользователю (по умолчанию 3)
     // DESCRIPTION для условия задачи
     private static final int MIN = 2;
     private static final int MAX = 100;
-    private static final int ITERATION = 3;
     private static final String DESCRIPTION =
             "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 
@@ -33,53 +29,26 @@ public class Prime {
     }
 
     public static void prime() {
-        // Приветствуем пользователя
-        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Welcome to the Brain Games!");
-        System.out.print("May I have your name? ");
-        String userName = scanner.next();
-        System.out.println("Hello, " + userName + "!");
+        // Создаем двумерный массив для записи в него вопросов и ответов
+        String[][] questionAndAnswer = new String[Engine.ROUNDS_COUNT][2];
 
-        // Выводим на экран условие игры
-        System.out.println(DESCRIPTION);
-
-        //Объявляем переменную result2 для записи в неё верность ответа пользователя
-        boolean result2 = false;
-
-        // Начинаем цикл для демонстрации пользователю числа, приема ответа пользователя
-        // и проверки ответа пользователя
-        for (int i = 0; i < ITERATION; i++) {
+        // Начинаем цикл для заполнения массива questionAndAnswer данными (вопросы и ответы)
+        for (int i = 0; i < Engine.ROUNDS_COUNT; i++) {
 
             // Генерируем случайное число, начинаем от 2
             int randomNumber = RandomUtils.nextInt(MIN, MAX); //(int) (Math.random() * 100);
 
-            // Объявляем переменную primeNumber для записии в неё результат проверки простое число или нет
-            String primeNumber = "";
-            // Проверяем является ли сгенерированное число простым, если оно простое, то переменной
-            // "primeNumber" присваиваем значение "yes", если нет - "no"
-            primeNumber = itPrimeNumber(randomNumber) ? "yes" : "no";
-
-            // Передаем данные для вопроса пользователя, правильный ответ и имя пользователя
+            // Записываем в массив вопрос для пользователя
             // C помощью конкатенации приводим переменные типа int к типу String
-            var result = Engine.engine("" + randomNumber, primeNumber, userName);
-
-            // Переменной result2 присвамиваем верность ответа пользователя
-            result2 = result;
-
-            // Если пользователя ответил неправильно, то прекращаем выполнение цикла
-            if (!result) {
-                break;
-            }
+            questionAndAnswer[i][Engine.QUESTION_INDEX] = "" + randomNumber;
+            // Записываем в массив правильный ответ (Проверяем является ли сгенерированное число простым)
+            questionAndAnswer[i][Engine.ANSWER_INDEX] = itPrimeNumber(randomNumber) ? "yes" : "no";
 
         }
 
-        // Если пользователь ответил правильно на все вопросы, то выводим сообщение с поздравлением
-        if (result2) {
-            System.out.println("Congratulations, " + userName + "!");
-        }
-
-        scanner.close();
+        // Передаем данные для вопроса и правильный ответ
+        Engine.engine(DESCRIPTION, questionAndAnswer);
 
     }
 }
