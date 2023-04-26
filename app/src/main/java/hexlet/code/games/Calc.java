@@ -39,9 +39,11 @@ public class Calc {
                 case '-':
                     resultOperation = randomNumber1 - randomNumber2;
                     break;
-                default: //case '*':
+                case '*':
                     resultOperation = randomNumber1 * randomNumber2;
                     break;
+                default:
+                    throw new RuntimeException("Unknown operation: " + arithmetic);
             }
 
             // Записываем в массив вопрос для пользователя

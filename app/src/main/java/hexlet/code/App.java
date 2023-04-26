@@ -47,6 +47,7 @@ public class App {
                 Prime.prime();
                 break;
             default:
+                System.out.println("Game number " + userChoice + " not found! Please enter a value from 0 to 6!");
                 break;
         }
 

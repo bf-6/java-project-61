@@ -25,10 +25,10 @@ public class Engine {
         System.out.println(description);
 
 
-        for (int i = 0; i < ROUNDS_COUNT; i++) {
+        for (var i : even) {
 
             // Выводим вопрос для пользователя на экран
-            System.out.println("Question: " + even[i][QUESTION_INDEX]);
+            System.out.println("Question: " + i[QUESTION_INDEX]);
 
             // Объявляем переменную "userResponse" для записи ответа пользователя
             // и принмимаем ответ пользователя с клавиатуры
@@ -36,16 +36,17 @@ public class Engine {
             String userResponse = scanner.next();
 
             // Проверяем верен ли ответ пользователя
-            if (userResponse.equalsIgnoreCase(even[i][ANSWER_INDEX])) {
+            if (userResponse.equalsIgnoreCase(i[ANSWER_INDEX])) {
                 System.out.println("Correct!");
             } else {
                 System.out.println("'" + userResponse + "'"
                         + " is wrong answer ;(. Correct answer was "
-                        + "'" + even[i][ANSWER_INDEX] + "'\n"
+                        + "'" + i[ANSWER_INDEX] + "'\n"
                         + "Let's try again, " + userName + "!");
                 scanner.close();
                 return;
             }
+
         }
 
         // Если пользователь ответил правильно на все вопросы, то выводим сообщение с поздравлением
